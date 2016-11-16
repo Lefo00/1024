@@ -8,7 +8,7 @@
 //#include <ctype.h>
 
 #define SQUARE_WIDTH 6
-#define SQUARE_HEIGHT 4
+#define SQUARE_HEIGHT 3
 #define COLOR 0x44
 #define VEL 1
 #define CONSOLEX 80
@@ -22,11 +22,11 @@ void hideCursor()
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
 }
 
-void forSquare(int x, int y)
+void forSquare(int x, int y, Bloco bloco1)
 {
     int i,j;
 
-    // InteraÁ„o para impress„o do bloco blaseada no SQUARE_WIDTH
+    // Intera√ß√£o para impress√£o do bloco blaseada no SQUARE_WIDTH
     for(i = x; i < x + SQUARE_WIDTH; i++)
     {
         for(j = y; j < y + SQUARE_HEIGHT; j++)
@@ -34,15 +34,23 @@ void forSquare(int x, int y)
             gotoxy(i,j);
 
 
-            // AQUI DEVE IR UMA L”GICA QUE FAZ IMPRIMIR O bloco.valor DO BLOCO NO CENTRO DO QUADRADO!
-
-
-            printf(" ");
+            // AQUI DEVE IR UMA L√ìGICA QUE FAZ IMPRIMIR O bloco.valor DO BLOCO NO CENTRO DO QUADRADO!
+		if(bloco.valor <= 9){
+           	 	printf("\n   %d", &bloco1.valor); //3 espa√ßos e 1 linha, para centralizar(ou tentar)
+		}else{
+			if(bloco.valor <= 99){
+				printf("\n  %d", &bloco1.valor); //2 espa√ßos e 1 linha, para centralizar(ou tentar)
+			}else{
+				if(bloco.valor <= 999){
+					printf("\n %d ", &bloco1.valor); //1 espa√ßo e 1 linha, para centralizar(ou tentar)
+				}else{
+					printf("\n %d ", &bloco1.valor); //1 espa√ßo e 1 linha, para centralizar(ou tentar)
+				}
         }
     }
 }
 
-// FunÁ„o feita em aula para printar os quadrados
+// Fun√ß√£o feita em aula para printar os quadrados
 void printSquare(int x, int y, int color)
 {
     textbackground(color);
